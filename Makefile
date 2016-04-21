@@ -2,6 +2,8 @@
 # Author: Jaeho Shin <netj@cs.stanford.edu>
 # Created: 2016-04-21
 
+.DEFAULT_GOAL := test
+
 TIMEOUT = 10s
 DATA ?= citylots.json
 DATA ?= signalmedia-1m.jsonl
@@ -18,8 +20,11 @@ IMPL += parse-json.pypy
 MEASUREMENT_EXTENSION = .throughput
 MEASUREMENTS = $(IMPL:%=%$(MEASUREMENT_EXTENSION))
 
-.PHONY: test
+.PHONY: test retest
 test: $(DATA) $(MEASUREMENTS)
+retest:
+	touch $(DATA)
+	$(MAKE) test
 
 SHELL = bash
 %$(MEASUREMENT_EXTENSION): % $(DATA)
