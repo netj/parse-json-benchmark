@@ -28,9 +28,15 @@ retest:
 
 SHELL = bash
 %$(MEASUREMENT_EXTENSION): % $(DATA)
-	# $(DATA) with $<
-	@dd if=$(DATA) 2>$@ | pv | timeout $(TIMEOUT) ./$<; [[ $$? = @(0|124) ]]
-	@cat $@
+	@echo "# $(DATA) with $<"
+	@if ./$< </dev/null; then \
+	    while dd if=$(DATA); do :; done 2>$@ | \
+	    pv | timeout $(TIMEOUT) ./$<; \
+	    [[ $$? = @(0|124) ]]; \
+	    cat $@; \
+	else \
+	    echo "# SKIPPING $<"; \
+	fi
 
 .PHONY: clean
 clean:
