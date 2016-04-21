@@ -1,0 +1,4 @@
+#!/usr/bin/env pypy
+import sys,json
+for line in sys.stdin:
+    json.loads(line)
