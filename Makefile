@@ -5,6 +5,9 @@
 .DEFAULT_GOAL := test
 
 TIMEOUT = 5s
+
+DATA ?= citylots.json
+
 DATA ?= companies.json
 DATA ?= enron.json
 DATA ?= stocks.json
@@ -12,8 +15,6 @@ DATA ?= zips.json
 DATA ?= world_bank.json
 
 DATA ?= signalmedia-1m.jsonl
-
-DATA ?= citylots.json
 
 # implementations
 IMPL += parse-json.jq
@@ -25,7 +26,7 @@ IMPL += parse-json.pypy
 
 # measurement outputs
 MEASUREMENT_EXTENSION = .throughput
-MEASUREMENTS = $(IMPL:%=%$(MEASUREMENT_EXTENSION))
+MEASUREMENTS = $(IMPL:%=%-$(DATA)$(MEASUREMENT_EXTENSION))
 
 .PHONY: test retest
 test: $(DATA) $(MEASUREMENTS)
@@ -34,7 +35,7 @@ retest:
 	$(MAKE) test
 
 SHELL = bash
-%$(MEASUREMENT_EXTENSION): % $(DATA)
+%-$(DATA)$(MEASUREMENT_EXTENSION): % $(DATA)
 	@echo "# $(DATA) with $<"
 	@if ./$< </dev/null; then \
 	    while dd if=$(DATA); do :; done 2>$@ | \
@@ -62,5 +63,4 @@ companies.json enron.json stocks.json zips.json world_bank.json:
 
 # other datasets
 citylots.json:
-	curl -LOC- https://github.com/zemirco/sf-city-lots-json/raw/master/citylots.json
-	touch $@
+	curl -L https://github.com/zemirco/sf-city-lots-json/raw/master/citylots.json | jq -c '.features[]' >$@
