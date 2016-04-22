@@ -13,7 +13,19 @@ Just measuring the throughput of JSON parsing in the following programming langu
 
 To measure all implementations:
 ```bash
-make
+$ make
+# citylots.json with parse-json.jq
+# citylots.json with parse-json.jq: 0:00:05 [29.4MiB/s]
+# citylots.json with parse-json-xs.pl
+# citylots.json with parse-json-xs.pl: 0:00:05 [56.7MiB/s]
+# citylots.json with parse-json-pp.pl
+# citylots.json with parse-json-pp.pl: 0:00:05 [1.18MiB/s]
+# citylots.json with parse-json.py2
+# citylots.json with parse-json.py2: 0:00:05 [30.2MiB/s]
+# citylots.json with parse-json.py3
+# citylots.json with parse-json.py3: 0:00:05 [32.4MiB/s]
+# citylots.json with parse-json.pypy
+# citylots.json with parse-json.pypy: 0:00:05 [49.4MiB/s]
 ```
 which also records results as `.throughput` files.
 

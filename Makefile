@@ -36,15 +36,15 @@ retest:
 
 SHELL = bash
 %-$(DATA)$(MEASUREMENT_EXTENSION): % $(DATA)
-	@echo "# $(DATA) with $<"
+	# $(DATA) with $<
 	@if ./$< </dev/null; then \
 	    while dd if=$(DATA); do :; done 2>$@ | \
-	    pv | timeout $(TIMEOUT) ./$<; \
+	    pv -f -N "# $(DATA) with $<" -t -a | \
+	    timeout $(TIMEOUT) ./$<; \
 	    [[ $$? = @(0|124) ]]; \
-	    cat $@; \
 	else \
 	    echo "# SKIPPING $<"; \
-	fi
+	fi 2> >(tee $@)
 
 .PHONY: clean
 clean:
