@@ -35,3 +35,7 @@ You can adjust how long to run each implementation with `TIMEOUT` parameter.
 make TIMEOUT=1m
 make TIMEOUT=30s
 ```
+
+## See Also
+* <http://sck.pm/p0>
+* <http://perlmaven.com/comparing-the-speed-of-json-decoders>
