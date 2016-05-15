@@ -63,7 +63,8 @@ $ make DATA=signalmedia-1m.jsonl
 # signalmedia-1m.jsonl with parse-json-readline.js: 0:00:05 [75.9MiB/s]
 ```
 which also records results as `.throughput` files.
-(Measurements above are from a MacBook Pro 15-inch, Mid 2015, 2.5GHz Intel Core i7.)
+
+Measurements above are captured from a single shoddy run on a MacBook Pro 15-inch, Mid 2015, 2.5GHz Intel Core i7 running OS X El Capitan 10.11.4 (with a bunch of apps running), so look at the numbers with a grain of salt.
 
 To measure a particular implementation:
 ```bash
