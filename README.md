@@ -2,13 +2,13 @@
 
 Just measuring the throughput of JSON parsing in the following programming languages and libraries:
 
-* jq
-* Perl `JSON::XS`
-* Perl `JSON::PP`
-* CPython 2 `json.loads`
-* CPython 3 `json.loads`
-* PyPy
-* node.js 5.9.0 `JSON.parse` with `readline`
+* jq 1.5
+* Perl 5.18.2 `JSON::XS` 3.02
+* Perl 5.18.2 `JSON::PP` 2.27203
+* Python with CPython 2.7.10 `json.loads`
+* Python with CPython 3.5.1 `json.loads`
+* Python with PyPy 5.0.1 `json.loads`
+* JavaScript with node.js 5.9.0 `JSON.parse` with `readline`
 
 ## Measuring throughputs
 
