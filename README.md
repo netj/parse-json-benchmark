@@ -8,6 +8,7 @@ Just measuring the throughput of JSON parsing in the following programming langu
 * CPython 2 `json.loads`
 * CPython 3 `json.loads`
 * PyPy
+* node.js 5.9.0 `JSON.parse` with `readline`
 
 ## Measuring throughputs
 
@@ -26,6 +27,8 @@ $ make
 # citylots.json with parse-json.py3: 0:00:05 [32.4MiB/s]
 # citylots.json with parse-json.pypy
 # citylots.json with parse-json.pypy: 0:00:05 [49.4MiB/s]
+# citylots.json with parse-json-readline.js
+# citylots.json with parse-json-readline.js: 0:00:05 [39.7MiB/s]
 
 $ make DATA=companies.json
 # companies.json with parse-json.jq
@@ -40,6 +43,8 @@ $ make DATA=companies.json
 # companies.json with parse-json.py3: 0:00:05 [62.8MiB/s]
 # companies.json with parse-json.pypy
 # companies.json with parse-json.pypy: 0:00:05 [ 137MiB/s]
+# companies.json with parse-json-readline.js
+# companies.json with parse-json-readline.js: 0:00:05 [  55MiB/s]
 
 $ make DATA=signalmedia-1m.jsonl
 # signalmedia-1m.jsonl with parse-json.jq
@@ -54,6 +59,8 @@ $ make DATA=signalmedia-1m.jsonl
 # signalmedia-1m.jsonl with parse-json.py3: 0:00:05 [ 126MiB/s]
 # signalmedia-1m.jsonl with parse-json.pypy
 # signalmedia-1m.jsonl with parse-json.pypy: 0:00:05 [96.8MiB/s]
+# signalmedia-1m.jsonl with parse-json-readline.js
+# signalmedia-1m.jsonl with parse-json-readline.js: 0:00:05 [75.9MiB/s]
 ```
 which also records results as `.throughput` files.
 (Measurements above are from a MacBook Pro 15-inch, Mid 2015, 2.5GHz Intel Core i7.)
