@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-exec jq null >/dev/null
+exec jq empty >/dev/null
