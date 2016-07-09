@@ -20,9 +20,15 @@ DATA ?= signalmedia-1m.jsonl
 IMPL += parse-json.jq
 IMPL += parse-json-xs.pl
 IMPL += parse-json-pp.pl
-IMPL += parse-json.py2
-IMPL += parse-json.py3
-IMPL += parse-json.pypy
+IMPL += parse-json-json.py2
+IMPL += parse-json-json.py3
+IMPL += parse-json-json.pypy
+IMPL += parse-json-ujson.py2
+IMPL += parse-json-ujson.py3
+IMPL += parse-json-ujson.pypy
+IMPL += parse-json-simplejson.py2
+IMPL += parse-json-simplejson.py3
+IMPL += parse-json-simplejson.pypy
 
 # measurement outputs
 MEASUREMENT_EXTENSION = .throughput

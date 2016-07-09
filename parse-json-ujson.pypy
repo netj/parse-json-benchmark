@@ -1,0 +1,4 @@
+#!/usr/bin/env pypy
+import sys,ujson
+for line in sys.stdin:
+    ujson.loads(line)

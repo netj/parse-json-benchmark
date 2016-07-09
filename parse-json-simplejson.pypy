@@ -1,0 +1,4 @@
+#!/usr/bin/env pypy
+import sys,simplejson
+for line in sys.stdin:
+    simplejson.loads(line)
